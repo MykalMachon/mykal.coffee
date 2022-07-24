@@ -1,0 +1,37 @@
+{
+  "name": "mykal.coffee",
+  "version": "1.0.0",
+  "description": "Mykal's coffee site",
+  "main": "index.js",
+  "scripts": {
+    "start": "astro dev",
+    "dev": "netlify dev",
+    "build": "astro build",
+    "test": "npm run test:lint",
+    "test:lint": "prettier -w ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MykalMachon/mykal.coffee.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MykalMachon/mykal.coffee/issues"
+  },
+  "homepage": "https://github.com/MykalMachon/mykal.coffee#readme",
+  "devDependencies": {
+    "@astrojs/preact": "^0.5.2",
+    "@astrojs/rss": "^0.2.2",
+    "@astrojs/sitemap": "^0.2.6",
+    "@netlify/functions": "^1.0.0",
+    "astro": "^1.0.0-beta.73",
+    "reading-time": "^1.5.0",
+    "sass": "^1.54.0",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "preact": "^10.10.0"
+  }
+}
