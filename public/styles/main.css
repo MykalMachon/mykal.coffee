@@ -1,4 +1,7 @@
+/* google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&family=Nova+Mono&display=swap');
+/* open props */
+@import "https://unpkg.com/open-props";
 
 * {
   box-sizing: border-box;
@@ -19,8 +22,13 @@ h6 {
   font-weight: bold;
 }
 
+/* main overrides */
+h1 {
+  font-size: 3em;
+}
+
 /* composition elements */
 
 .container--wide {
-  padding: 0em 1em;
+  padding: 0em var(--size-3);
 }

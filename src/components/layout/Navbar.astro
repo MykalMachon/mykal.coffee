@@ -1,19 +1,9 @@
 ---
 const { title, description } = Astro.props;
 
-const marqueeText = [...Array(20).keys()].map((num, idx) => {
-  if (idx % 2 == 1) {
-    return ' * '
-  } else {
-    return ' mykal likes coffee '
-  }
-})
 ---
 
 <header class="navbar__container">
-  <div class="marquee">
-    {marqueeText}
-  </div>
   <div class="navbar container--wide">
     <div class="navbar__title">
       mykal.coffee
@@ -45,7 +35,7 @@ const marqueeText = [...Array(20).keys()].map((num, idx) => {
 
   .marquee {
     border-bottom: 1px solid white;
-    padding: 1em 0;
+    padding: var(--size-3) 0;
     overflow-x: hidden;
     white-space: nowrap;
     text-align: center;
