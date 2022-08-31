@@ -1,6 +1,7 @@
 ---
 const posts = await Astro.glob('../../pages/notes/*.mdx');
 const sortedPosts = posts.sort(
+  //@ts-ignore
   (a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate)
 );
 ---
