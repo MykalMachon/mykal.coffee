@@ -23,8 +23,8 @@ const sortedPosts = posts.sort(
 <style lang="scss">
   .postlist {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: var(--size-3);
+    grid-template-columns: repeat(auto-fill, minmax(min(25rem, 100%), 1fr));
   }
   .postlist__post {
     border: 1px solid var(--paper-3);
