@@ -1,7 +1,98 @@
 /* google fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&family=Nova+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@700&display=swap');
 /* open props */
-@import "https://unpkg.com/open-props";
+@import 'https://unpkg.com/open-props';
+
+/* setting shared css variables */
+:root {
+  /* color mode */
+  --color-mode: 'light';
+
+  /* generic colors from Palette 19 in Refactoring UI */
+  --p-indigo-9: #19216c;
+  --p-indigo-8: #2d3a8c;
+  --p-indigo-7: #35469c;
+  --p-indigo-6: #4055a8;
+  --p-indigo-5: #4c63b6;
+  --p-indigo-4: #647acb;
+  --p-indigo-3: #7b93db;
+  --p-indigo-2: #98aeeb;
+  --p-indigo-1: #bed0f7;
+  --p-indigo-0: #e0e8f9;
+
+  --p-orange-9: #841003;
+  --p-orange-8: #ad1d07;
+  --p-orange-7: #c52707;
+  --p-orange-6: #de3a11;
+  --p-orange-5: #f35627;
+  --p-orange-4: #f9703e;
+  --p-orange-3: #ff9466;
+  --p-orange-2: #ffb088;
+  --p-orange-1: #ffd0b5;
+  --p-orange-0: #ffe8d9;
+
+  --p-gray-9: #1f2933;
+  --p-gray-8: #323f4b;
+  --p-gray-7: #3e4c59;
+  --p-gray-6: #52606d;
+  --p-gray-5: #616e7c;
+  --p-gray-4: #7b8794;
+  --p-gray-3: #9aa5b1;
+  --p-gray-2: #cbd2d9;
+  --p-gray-1: #e4e7eb;
+  --p-gray-0: #f5f7fa;
+
+  /* setting colors to be used throughout */
+  --ink-1: var(--p-gray-9);
+  --ink-2: var(--p-gray-7);
+  --ink-3: var(--p-gray-6);
+  --ink-4: var(--p-gray-1);
+
+  --paper-1: var(--p-gray-0);
+  --paper-2: var(--p-gray-1);
+  --paper-3: var(--p-gray-3);
+  --paper-4: var(--p-gray-9);
+
+  --highlight-1: var(--p-indigo-9);
+  --highlight-2: var(--p-indigo-7);
+  --highlight-3: var(--p-indigo-6);
+  --highlight-4: var(--p-indigo-1);
+
+  /* fonts */
+  --font-heading: 'IBM Plex Mono', monospace;
+  --font-body: 'Inter', sans-serif;
+
+  --font-size-sm: clamp(0.8rem, 0.17vw + 0.76rem, 0.89rem);
+  --font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
+  --font-size-md: clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem);
+  --font-size-lg: clamp(1.56rem, 1vw + 1.31rem, 2.11rem);
+  --font-size-xl: clamp(1.95rem, 1.56vw + 1.56rem, 2.81rem);
+  --font-size-xxl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
+  --font-size-xxxl: clamp(3.05rem, 3.54vw + 2.17rem, 5rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-mode: 'dark';
+    --ink-1: var(--p-gray-0);
+    --ink-2: var(--p-gray-1);
+    --ink-3: var(--p-gray-3);
+    --ink-4: var(--p-gray-9);
+
+    --paper-1: var(--p-gray-9);
+    --paper-2: var(--p-gray-7);
+    --paper-3: var(--p-gray-6);
+    --paper-4: var(--p-gray-1);
+
+    --highlight-1: var(--p-indigo-0);
+    --highlight-2: var(--p-indigo-1);
+    --highlight-3: var(--p-indigo-5);
+    --highlight-4: var(--p-indigo-9);
+  }
+
+  /* todo add check for user defined light mode */
+}
 
 * {
   box-sizing: border-box;
@@ -9,7 +100,10 @@
 
 body {
   margin: 0px;
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-body);
+  /* defaults */
+  background: var(--paper-1);
+  color: var(--ink-1);
 }
 
 h1,
@@ -18,16 +112,97 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Inter', sans-serif;
+  position: relative;
+  font-family: var(--font-heading);
   font-weight: bold;
+  text-transform: capitalize;
+  margin: 1rem 0;
+}
+
+/* h1::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 25%;
+  left: 0;
+  bottom: 10%;
+  background: var(--highlight-3);
+  z-index: -1;
+} */
+
+p,
+a,
+input,
+select,
+textarea,
+input,
+ul,
+li,
+ol,
+span,
+div {
+  color: var(--ink-2);
+  font-size: var(--font-size-base);
+}
+
+p {
+  margin: 1rem 0;
 }
 
 /* main overrides */
 h1 {
-  font-size: 3em;
+  font-size: var(--font-size-xxl);
+}
+
+h2 {
+  font-size: var(--font-size-xl);
+}
+
+h3 {
+  font-size: var(--font-size-lg);
+}
+
+a {
+  color: var(--highlight-3);
 }
 
 /* composition elements */
+.page__note {
+  margin-left: 10vw;
+}
+
+.page__note * {
+  max-width: 80ch;
+}
+
+.page__note header {
+  position: relative;
+  margin-bottom: var(--size-8);
+}
+
+.page__note header:after {
+  content: '';
+  position: absolute;
+  bottom: calc(-1 * var(--size-5));
+  left: 0;
+  width: 24ch;
+  height: 1px;
+  background: var(--paper-2);
+}
+
+.page__note header p:first-of-type {
+  font-size: var(--font-size-md);
+}
+
+@media screen and (max-width: 1000px) {
+  .page__note {
+    margin-left: 0;
+  }
+}
+
+.container {
+  padding: 0em;
+}
 
 .container--wide {
   padding: 0em var(--size-3);

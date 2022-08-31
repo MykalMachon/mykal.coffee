@@ -1,24 +1,20 @@
 ---
 const { title, description } = Astro.props;
-
 ---
 
 <header class="navbar__container">
   <div class="navbar container--wide">
-    <div class="navbar__title">
-      mykal.coffee
-    </div>
-    <nav class="navbar__links">
-      more to come...
-    </nav>
+    <div class="navbar__title">Coffee w/ Mykal.</div>
+    <nav class="navbar__links">more to come...</nav>
   </div>
 </header>
 
 <style lang="scss">
   .navbar__container {
     width: 100%;
-    background: black;
-    color: white;
+    background: var(--paper-1);
+    color: var(--ink-1);
+    border-bottom: 1px solid var(--paper-3);
     position: sticky;
     top: 0;
     display: flex;

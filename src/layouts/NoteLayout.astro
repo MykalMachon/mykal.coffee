@@ -1,0 +1,41 @@
+---
+import Navbar from '../components/layout/Navbar.astro';
+import Head from '../components/layout/Head.astro';
+
+const { title, description, content } = Astro.props;
+
+// if the page is markdown, use the content title instead of the provided props
+const pageTitle = title ? title : content.title;
+const pageDescription = description ? description : content.description;
+const pubDate = content.pubDate;
+
+const formatter = Intl.DateTimeFormat('EN-UK', { dateStyle: 'full' });
+---
+
+<html class="" lang="en">
+  <head>
+    <slot name="head-content" />
+    <Head title={pageTitle} description={pageDescription} />
+  </head>
+
+  <body class="site-container">
+    <Navbar />
+    <div class="container--wide page__note">
+      <header>
+        <h1>{pageTitle}</h1>
+        {pageDescription && <p>{pageDescription}</p>}
+        <i>
+          {formatter.format(new Date(pubDate))}
+          -
+          {content.tags.map((tag) => <span class="tag">#{tag}</span>)}
+        </i>
+      </header>
+      <main class="page__note__main">
+        <slot />
+      </main>
+      <footer class="page__note_footer">
+        <a href="/">return home...</a>
+      </footer>
+    </div>
+  </body>
+</html>

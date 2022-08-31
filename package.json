@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/MykalMachon/mykal.coffee#readme",
   "devDependencies": {
+    "@astrojs/mdx": "^0.10.3",
     "@astrojs/preact": "^1.0.2",
     "@astrojs/rss": "^1.0.0",
     "@astrojs/sitemap": "^1.0.0",
