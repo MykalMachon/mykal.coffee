@@ -1,7 +1,6 @@
 ---
 title: This isn't done yet
 description: If you're reading this, the site's not done. Come back later!
-layout: '../../layouts/NoteLayout.astro'
 pubDate: 2022-08-31
 tags: ['leave']
 ---
