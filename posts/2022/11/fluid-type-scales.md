@@ -1,7 +1,6 @@
 ---
 title: Fluid type scales 💦
 description: I've been using this fluid type scale calculator for awhile...
-layout: '../../layouts/NoteLayout.astro'
 pubDate: 2022-08-31
 tags: ['tools']
 ---

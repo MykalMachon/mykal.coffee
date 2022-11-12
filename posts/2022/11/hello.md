@@ -1,7 +1,6 @@
 ---
 title: Hello 👋
 description: Hey, howdy, hi. Welcome to my digital garden 🍃
-layout: '../../layouts/NoteLayout.astro'
 pubDate: 2022-08-30
 tags: ['intro']
 ---
