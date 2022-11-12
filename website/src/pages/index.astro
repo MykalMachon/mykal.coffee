@@ -1,4 +1,5 @@
 ---
+const posts = await Astro.glob('../../../posts/**/**.md');
 ---
 
 <html lang="en">
@@ -20,6 +21,8 @@
       href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <!-- GENERIC CSS -->
+    <link rel="stylesheet" href="./main.css">
   </head>
   <body>
     <div class="site-container">
@@ -43,38 +46,14 @@
       <main>
         <section class="block-container__posts">
           <p>Posts go here</p>
-          <article>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
-            fuga quo non officiis suscipit nobis necessitatibus exercitationem
-            explicabo iure dolor, veniam cum id magnam rerum similique. Culpa
-            molestias velit similique?
-          </article>
-          <article>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Reprehenderit dolores laborum distinctio, expedita cupiditate sed
-            dicta sunt esse. Ullam saepe natus quos consequatur, temporibus
-            atque corrupti facilis labore fugit a.
-          </article>
-          <article>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. At enim
-            voluptatem, ipsum sapiente atque aspernatur corporis iure
-            perferendis recusandae tempora saepe eligendi dolorem cumque aperiam
-            quam assumenda accusantium nam nisi! Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Quibusdam nulla unde officia iure,
-            quas dicta iusto adipisci dolore iste! Fugiat vitae quo id
-            laudantium, iste odio hic. Nulla, sapiente ea.
-          </article>
-          <article>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error iste
-            eveniet officia cumque esse! Deserunt illo cum eaque ut quos. Natus
-            ad fuga doloremque exercitationem eum reprehenderit at ipsa impedit.
-          </article>
-          <article>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio
-            adipisci sed neque, necessitatibus, placeat asperiores praesentium
-            nobis illo explicabo ad dolorum nisi alias aliquam. Cumque eum
-            laborum accusamus voluptas expedita!
-          </article>
+          {posts.map((post) => {
+            return (
+              <article>
+                <h3>{post.frontmatter.title}</h3>
+                <div set:html={post.compiledContent()}></div>
+              </article>
+            )
+          } )}
         </section>
       </main>
     </div>
@@ -96,17 +75,13 @@
   .site-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    gap: 2px;
-    min-height: 200vh;
+    min-height: 100vh;
     background: var(--gray-9);
     header {
       grid-column: 2;
-      border-left: 1px solid var(--teal-9);
-      border-right: 1px solid var(--teal-9);
     }
     main {
       grid-column: span 2;
-      border-right: 1px solid var(--teal-9);
     }
 
     @media screen and (max-width: 1000px) {
@@ -119,9 +94,10 @@
   }
 
   .header-content {
-    border-bottom: 1px solid var(--teal-9);
+    border: 1px solid var(--teal-9);
+    border-right: 0px;
     position: sticky;
-    top: 0px;
+    top: var(--size-8);
   }
 
   .block-container {
@@ -129,6 +105,8 @@
   }
 
   .block-container__posts {
+    margin-top: var(--size-8);
+    border: 1px solid var(--teal-9);
     > * {
       padding: var(--size-3);
       border-bottom: 1px solid var(--teal-9);
